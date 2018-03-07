@@ -281,6 +281,7 @@ var InfiniteScroll = (function(_Component) {
           threshold = _props.threshold,
           useCapture = _props.useCapture,
           useWindow = _props.useWindow,
+          ran = _props.ran,
           props = _objectWithoutProperties(_props, [
             'children',
             'element',
@@ -294,6 +295,7 @@ var InfiniteScroll = (function(_Component) {
             'threshold',
             'useCapture',
             'useWindow',
+            'ran',
           ]);
 
         props.ref = function(node) {
