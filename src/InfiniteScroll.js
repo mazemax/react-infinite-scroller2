@@ -16,6 +16,7 @@ export default class InfiniteScroll extends Component {
     threshold: PropTypes.number,
     useCapture: PropTypes.bool,
     useWindow: PropTypes.bool,
+    ran: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -29,6 +30,7 @@ export default class InfiniteScroll extends Component {
     isReverse: false,
     useCapture: false,
     loader: null,
+    ran: true,
   };
 
   constructor(props) {
@@ -155,8 +157,15 @@ export default class InfiniteScroll extends Component {
     if (offset < Number(this.props.threshold)) {
       this.detachScrollListener();
       // Call loadMore after detachScrollListener to allow for non-async loadMore functions
-      if (typeof this.props.loadMore === 'function') {
+      if (
+        typeof this.props.loadMore === 'function' &&
+        this.props.ran === true
+      ) {
         this.props.loadMore((this.pageLoaded += 1));
+        this.props.ran = false;
+        window.setTimeout(function() {
+          this.props.ran = true;
+        }, 1000);
       }
     }
   }
