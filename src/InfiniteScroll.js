@@ -211,7 +211,6 @@ export default class InfiniteScroll extends Component {
           : childrenArray.push(this.defaultLoader);
       }
     }
-    const { ran, ...rest } = props;
-    return React.createElement(element, ...rest, childrenArray);
+    return React.createElement(element, props, childrenArray);
   }
 }
