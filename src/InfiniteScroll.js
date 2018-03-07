@@ -191,6 +191,7 @@ export default class InfiniteScroll extends Component {
       threshold,
       useCapture,
       useWindow,
+      ran,
       ...props
     } = this.props;
 
